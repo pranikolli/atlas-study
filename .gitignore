@@ -1,0 +1,203 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Flutter
+atlas_study_app/.dart_tool/
+atlas_study_app/.packages
+atlas_study_app/.pub-cache/
+atlas_study_app/.pub/
+atlas_study_app/build/
+atlas_study_app/ios/Flutter/App.framework
+atlas_study_app/ios/Flutter/Flutter.framework
+atlas_study_app/ios/Flutter/Flutter.podspec
+atlas_study_app/ios/Flutter/Generated.xcconfig
+atlas_study_app/ios/Flutter/app.flx
+atlas_study_app/ios/Flutter/app.zip
+atlas_study_app/ios/Flutter/flutter_assets/
+atlas_study_app/ios/ServiceDefinitions.json
+atlas_study_app/ios/Runner/GeneratedPluginRegistrant.*
+atlas_study_app/android/app/debug
+atlas_study_app/android/app/profile
+atlas_study_app/android/app/release
+atlas_study_app/android/.gradle
+atlas_study_app/android/captures/
+atlas_study_app/android/gradlew
+atlas_study_app/android/gradlew.bat
+atlas_study_app/android/local.properties
+atlas_study_app/android/**/GeneratedPluginRegistrant.java
+atlas_study_app/ios/**/*.mode1v3
+atlas_study_app/ios/**/*.mode2v3
+atlas_study_app/ios/**/*.moved-aside
+atlas_study_app/ios/**/*.pbxuser
+atlas_study_app/ios/**/*.perspectivev3
+atlas_study_app/ios/**/*sync/
+atlas_study_app/ios/**/.sconsign.dblite
+atlas_study_app/ios/**/.tags*
+atlas_study_app/ios/**/.vagrant/
+atlas_study_app/ios/**/DerivedData/
+atlas_study_app/ios/**/Icon?
+atlas_study_app/ios/**/Pods/
+atlas_study_app/ios/**/.symlinks/
+atlas_study_app/ios/**/profile
+atlas_study_app/ios/**/xcuserdata
+atlas_study_app/ios/.generated/
+atlas_study_app/ios/Flutter/App.framework
+atlas_study_app/ios/Flutter/Flutter.framework
+atlas_study_app/ios/Flutter/Flutter.podspec
+atlas_study_app/ios/Flutter/Generated.xcconfig
+atlas_study_app/ios/Flutter/ephemeral/
+atlas_study_app/ios/Flutter/app.flx
+atlas_study_app/ios/Flutter/app.zip
+atlas_study_app/ios/Flutter/flutter_assets/
+atlas_study_app/ios/Flutter/framework.zip
+atlas_study_app/ios/Flutter/flutter_export_environment.sh
+atlas_study_app/ios/ServiceDefinitions.json
+atlas_study_app/ios/Runner/GeneratedPluginRegistrant.*
+
+# Python
+atlas-backend/__pycache__/
+atlas-backend/*.py[cod]
+atlas-backend/*$py.class
+atlas-backend/*.so
+atlas-backend/.Python
+atlas-backend/build/
+atlas-backend/develop-eggs/
+atlas-backend/dist/
+atlas-backend/downloads/
+atlas-backend/eggs/
+atlas-backend/.eggs/
+atlas-backend/lib/
+atlas-backend/lib64/
+atlas-backend/parts/
+atlas-backend/sdist/
+atlas-backend/var/
+atlas-backend/wheels/
+atlas-backend/pip-wheel-metadata/
+atlas-backend/share/python-wheels/
+atlas-backend/*.egg-info/
+atlas-backend/.installed.cfg
+atlas-backend/*.egg
+atlas-backend/MANIFEST
+atlas-backend/.pytest_cache/
+atlas-backend/cover/
+atlas-backend/.tox/
+atlas-backend/.nox/
+atlas-backend/.coverage
+atlas-backend/.coverage.*
+atlas-backend/.cache
+atlas-backend/nosetests.xml
+atlas-backend/coverage.xml
+atlas-backend/*.cover
+atlas-backend/*.py,cover
+atlas-backend/.hypothesis/
+atlas-backend/.venv
+atlas-backend/venv/
+atlas-backend/env/
+atlas-backend/.env
+atlas-backend/.env.local
+atlas-backend/.env.production
+atlas-backend/.env.staging
+
+# Alembic
+atlas-backend/alembic/versions/*.py
+!atlas-backend/alembic/versions/.gitkeep
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Google Cloud
+.gcloud/
+service-account-key.json
+*.key
