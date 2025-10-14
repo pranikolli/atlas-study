@@ -30,8 +30,8 @@ class AtlasStudyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authStateProvider);
 
-    return MaterialApp(
-      title: 'Atlas Study',
+    return             MaterialApp(
+              title: 'ATLAS STUDY',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light, // Force light theme for black/white design

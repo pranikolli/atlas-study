@@ -3,6 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../core/providers/auth_providers.dart';
+import 'settings_page.dart';
+import 'today_page.dart';
+import 'week_page.dart';
+import 'month_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -24,8 +28,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Atlas Study'),
+              appBar: AppBar(
+                title: const Text('ATLAS STUDY'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),

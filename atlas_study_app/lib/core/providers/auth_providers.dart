@@ -96,7 +96,11 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
   Future<void> signup(String email, String password, {String? fullName}) async {
     state = const AsyncValue.loading();
     try {
+      // Create the user account
       await _authService.signup(email, password, fullName: fullName);
+      
+      // Automatically log in the user after successful signup
+      await _authService.login(email, password);
       final user = await _authService.getCurrentUser();
       state = AsyncValue.data(user);
     } catch (e) {

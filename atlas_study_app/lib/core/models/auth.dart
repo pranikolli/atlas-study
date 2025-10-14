@@ -27,9 +27,9 @@ class SignupRequest with _$SignupRequest {
 @freezed
 class AuthResponse with _$AuthResponse {
   const factory AuthResponse({
-    required String accessToken,
-    required String refreshToken,
-    required String tokenType,
+    @JsonKey(name: 'access_token') required String accessToken,
+    @JsonKey(name: 'refresh_token') required String refreshToken,
+    @JsonKey(name: 'token_type') required String tokenType,
   }) = _AuthResponse;
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) => _$AuthResponseFromJson(json);
@@ -40,13 +40,13 @@ class User with _$User {
   const factory User({
     required int id,
     required String email,
-    String? fullName,
-    required bool isActive,
-    required bool isVerified,
-    @Default("22:00") String sleepWindowStart,
-    @Default("08:00") String sleepWindowEnd,
-    @Default("medium") String reminderIntensity,
-    @Default(60) int defaultTaskDuration,
+    @JsonKey(name: 'full_name') String? fullName,
+    @JsonKey(name: 'is_active') required bool isActive,
+    @JsonKey(name: 'is_verified') required bool isVerified,
+    @JsonKey(name: 'sleep_window_start') @Default("22:00") String sleepWindowStart,
+    @JsonKey(name: 'sleep_window_end') @Default("08:00") String sleepWindowEnd,
+    @JsonKey(name: 'reminder_intensity') @Default("medium") String reminderIntensity,
+    @JsonKey(name: 'default_task_duration') @Default(60) int defaultTaskDuration,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

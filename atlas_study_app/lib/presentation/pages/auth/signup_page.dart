@@ -57,7 +57,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
     return Scaffold(
       backgroundColor: AppTheme.primaryWhite,
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('ATLAS STUDY - Sign Up'),
         backgroundColor: AppTheme.primaryWhite,
         foregroundColor: AppTheme.primaryBlack,
         elevation: 0,
@@ -80,6 +80,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                     hintText: 'Enter your full name',
                     prefixIcon: Icon(Icons.person_outlined),
                   ),
+                  textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 16),
 
@@ -87,6 +88,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     hintText: 'Enter your email',
@@ -108,6 +110,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
+                  textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     labelText: 'Password',
                     hintText: 'Enter your password',
@@ -127,8 +130,17 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
                     }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
+                    if (value.length < 8) {
+                      return 'Password must be at least 8 characters';
+                    }
+                    if (!value.contains(RegExp(r'[A-Z]'))) {
+                      return 'Password must contain at least 1 uppercase letter';
+                    }
+                    if (!value.contains(RegExp(r'[0-9]'))) {
+                      return 'Password must contain at least 1 number';
+                    }
+                    if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                      return 'Password must contain at least 1 special character';
                     }
                     return null;
                   },
@@ -139,6 +151,8 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                 TextFormField(
                   controller: _confirmPasswordController,
                   obscureText: _obscureConfirmPassword,
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (_) => _handleSignup(),
                   decoration: InputDecoration(
                     labelText: 'Confirm Password',
                     hintText: 'Confirm your password',

@@ -12,11 +12,19 @@ class AuthService {
 
   // Login user
   Future<AuthResponse> login(String email, String password) async {
+    print('🟡 Attempting login:');
+    print('  Email: $email');
+    print('  URL: ${ApiConfig.baseUrl}${ApiConfig.authEndpoint}/login');
+    
     try {
       final response = await _dio.post(
         '${ApiConfig.baseUrl}${ApiConfig.authEndpoint}/login',
         data: LoginRequest(email: email, password: password).toJson(),
       );
+
+      print('✅ Login successful!');
+      print('  Status: ${response.statusCode}');
+      print('  Response: ${response.data}');
 
       final authResponse = AuthResponse.fromJson(response.data);
       
@@ -26,42 +34,75 @@ class AuthService {
       
       return authResponse;
     } on DioException catch (e) {
+      print('❌ Login failed with DioException');
       throw _handleError(e);
+    } catch (e) {
+      print('❌ Login failed with unexpected error: $e');
+      rethrow;
     }
   }
 
   // Signup user
   Future<User> signup(String email, String password, {String? fullName}) async {
+    print('🟡 Attempting signup:');
+    print('  Email: $email');
+    print('  Full Name: $fullName');
+    print('  URL: ${ApiConfig.baseUrl}${ApiConfig.authEndpoint}/signup');
+    
     try {
       final response = await _dio.post(
         '${ApiConfig.baseUrl}${ApiConfig.authEndpoint}/signup',
         data: SignupRequest(email: email, password: password, fullName: fullName).toJson(),
       );
 
+      print('✅ Signup successful!');
+      print('  Status: ${response.statusCode}');
+      print('  Response: ${response.data}');
+
       return User.fromJson(response.data);
     } on DioException catch (e) {
+      print('❌ Signup failed with DioException');
       throw _handleError(e);
+    } catch (e) {
+      print('❌ Signup failed with unexpected error: $e');
+      rethrow;
     }
   }
 
   // Get current user
   Future<User?> getCurrentUser() async {
     final token = await getAccessToken();
-    if (token == null) return null;
+    if (token == null) {
+      print('🔴 No access token found');
+      return null;
+    }
+
+    print('🟡 Getting current user:');
+    print('  URL: ${ApiConfig.baseUrl}${ApiConfig.userEndpoint}/me');
+    print('  Token: ${token.substring(0, 20)}...');
 
     try {
       final response = await _dio.get(
-        '${ApiConfig.baseUrl}/user/me',
+        '${ApiConfig.baseUrl}${ApiConfig.userEndpoint}/me',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
+
+      print('✅ Get current user successful!');
+      print('  Status: ${response.statusCode}');
+      print('  Response: ${response.data}');
 
       return User.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response?.statusCode == 401) {
+        print('🔴 Unauthorized - logging out');
         await logout();
         return null;
       }
+      print('❌ Get current user failed with DioException');
       throw _handleError(e);
+    } catch (e) {
+      print('❌ Get current user failed with unexpected error: $e');
+      rethrow;
     }
   }
 
@@ -89,10 +130,19 @@ class AuthService {
 
   // Handle API errors
   String _handleError(DioException e) {
+    print('🔴 Auth Error Debug Info:');
+    print('  Error Type: ${e.type}');
+    print('  Status Code: ${e.response?.statusCode}');
+    print('  Response Data: ${e.response?.data}');
+    print('  Request URL: ${e.requestOptions.uri}');
+    print('  Request Data: ${e.requestOptions.data}');
+    
     if (e.response?.data != null) {
       final data = e.response!.data;
       if (data is Map<String, dynamic> && data.containsKey('detail')) {
-        return data['detail'].toString();
+        final detail = data['detail'].toString();
+        print('  Server Error Detail: $detail');
+        return detail;
       }
     }
     
@@ -100,11 +150,17 @@ class AuthService {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return 'Connection timeout. Please check your internet connection.';
+        print('  Error: Connection timeout to backend server');
+        return 'Connection timeout. Backend server may be down.';
       case DioExceptionType.connectionError:
-        return 'No internet connection. Please check your network.';
+        print('  Error: Cannot connect to backend server');
+        return 'Cannot connect to backend server. Is it running on http://localhost:8000?';
+      case DioExceptionType.badResponse:
+        print('  Error: Bad response from server (${e.response?.statusCode})');
+        return 'Server error (${e.response?.statusCode}). Check backend logs.';
       default:
-        return 'An unexpected error occurred. Please try again.';
+        print('  Error: Unexpected error type');
+        return 'An unexpected error occurred. Check console for details.';
     }
   }
 }

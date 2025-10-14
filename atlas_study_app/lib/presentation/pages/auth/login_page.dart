@@ -63,7 +63,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               children: [
                 // Logo/Title
                 const Text(
-                  'Atlas Study',
+                  'ATLAS STUDY',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -86,6 +86,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     hintText: 'Enter your email',
@@ -107,6 +108,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (_) => _handleLogin(),
                   decoration: InputDecoration(
                     labelText: 'Password',
                     hintText: 'Enter your password',

@@ -8,6 +8,7 @@ class ApiConfig {
   static const String tasksEndpoint = '/tasks';
   static const String coursesEndpoint = '/courses';
   static const String sessionsEndpoint = '/sessions';
+  static const String userEndpoint = '/user';
   
   // Timeouts
   static const Duration connectTimeout = Duration(seconds: 30);

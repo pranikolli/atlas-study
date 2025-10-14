@@ -375,8 +375,11 @@ AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthResponse {
+  @JsonKey(name: 'access_token')
   String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'refresh_token')
   String get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'token_type')
   String get tokenType => throw _privateConstructorUsedError;
 
   /// Serializes this AuthResponse to a JSON map.
@@ -395,7 +398,10 @@ abstract class $AuthResponseCopyWith<$Res> {
           AuthResponse value, $Res Function(AuthResponse) then) =
       _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
   @useResult
-  $Res call({String accessToken, String refreshToken, String tokenType});
+  $Res call(
+      {@JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(name: 'token_type') String tokenType});
 }
 
 /// @nodoc
@@ -442,7 +448,10 @@ abstract class _$$AuthResponseImplCopyWith<$Res>
       __$$AuthResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String accessToken, String refreshToken, String tokenType});
+  $Res call(
+      {@JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(name: 'token_type') String tokenType});
 }
 
 /// @nodoc
@@ -483,18 +492,21 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AuthResponseImpl implements _AuthResponse {
   const _$AuthResponseImpl(
-      {required this.accessToken,
-      required this.refreshToken,
-      required this.tokenType});
+      {@JsonKey(name: 'access_token') required this.accessToken,
+      @JsonKey(name: 'refresh_token') required this.refreshToken,
+      @JsonKey(name: 'token_type') required this.tokenType});
 
   factory _$AuthResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthResponseImplFromJson(json);
 
   @override
+  @JsonKey(name: 'access_token')
   final String accessToken;
   @override
+  @JsonKey(name: 'refresh_token')
   final String refreshToken;
   @override
+  @JsonKey(name: 'token_type')
   final String tokenType;
 
   @override
@@ -538,18 +550,22 @@ class _$AuthResponseImpl implements _AuthResponse {
 
 abstract class _AuthResponse implements AuthResponse {
   const factory _AuthResponse(
-      {required final String accessToken,
-      required final String refreshToken,
-      required final String tokenType}) = _$AuthResponseImpl;
+          {@JsonKey(name: 'access_token') required final String accessToken,
+          @JsonKey(name: 'refresh_token') required final String refreshToken,
+          @JsonKey(name: 'token_type') required final String tokenType}) =
+      _$AuthResponseImpl;
 
   factory _AuthResponse.fromJson(Map<String, dynamic> json) =
       _$AuthResponseImpl.fromJson;
 
   @override
+  @JsonKey(name: 'access_token')
   String get accessToken;
   @override
+  @JsonKey(name: 'refresh_token')
   String get refreshToken;
   @override
+  @JsonKey(name: 'token_type')
   String get tokenType;
 
   /// Create a copy of AuthResponse
@@ -568,12 +584,19 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_name')
   String? get fullName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_active')
   bool get isActive => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_verified')
   bool get isVerified => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sleep_window_start')
   String get sleepWindowStart => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sleep_window_end')
   String get sleepWindowEnd => throw _privateConstructorUsedError;
+  @JsonKey(name: 'reminder_intensity')
   String get reminderIntensity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'default_task_duration')
   int get defaultTaskDuration => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
@@ -593,13 +616,13 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {int id,
       String email,
-      String? fullName,
-      bool isActive,
-      bool isVerified,
-      String sleepWindowStart,
-      String sleepWindowEnd,
-      String reminderIntensity,
-      int defaultTaskDuration});
+      @JsonKey(name: 'full_name') String? fullName,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_verified') bool isVerified,
+      @JsonKey(name: 'sleep_window_start') String sleepWindowStart,
+      @JsonKey(name: 'sleep_window_end') String sleepWindowEnd,
+      @JsonKey(name: 'reminder_intensity') String reminderIntensity,
+      @JsonKey(name: 'default_task_duration') int defaultTaskDuration});
 }
 
 /// @nodoc
@@ -678,13 +701,13 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {int id,
       String email,
-      String? fullName,
-      bool isActive,
-      bool isVerified,
-      String sleepWindowStart,
-      String sleepWindowEnd,
-      String reminderIntensity,
-      int defaultTaskDuration});
+      @JsonKey(name: 'full_name') String? fullName,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_verified') bool isVerified,
+      @JsonKey(name: 'sleep_window_start') String sleepWindowStart,
+      @JsonKey(name: 'sleep_window_end') String sleepWindowEnd,
+      @JsonKey(name: 'reminder_intensity') String reminderIntensity,
+      @JsonKey(name: 'default_task_duration') int defaultTaskDuration});
 }
 
 /// @nodoc
@@ -756,13 +779,13 @@ class _$UserImpl implements _User {
   const _$UserImpl(
       {required this.id,
       required this.email,
-      this.fullName,
-      required this.isActive,
-      required this.isVerified,
-      this.sleepWindowStart = "22:00",
-      this.sleepWindowEnd = "08:00",
-      this.reminderIntensity = "medium",
-      this.defaultTaskDuration = 60});
+      @JsonKey(name: 'full_name') this.fullName,
+      @JsonKey(name: 'is_active') required this.isActive,
+      @JsonKey(name: 'is_verified') required this.isVerified,
+      @JsonKey(name: 'sleep_window_start') this.sleepWindowStart = "22:00",
+      @JsonKey(name: 'sleep_window_end') this.sleepWindowEnd = "08:00",
+      @JsonKey(name: 'reminder_intensity') this.reminderIntensity = "medium",
+      @JsonKey(name: 'default_task_duration') this.defaultTaskDuration = 60});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -772,22 +795,25 @@ class _$UserImpl implements _User {
   @override
   final String email;
   @override
+  @JsonKey(name: 'full_name')
   final String? fullName;
   @override
+  @JsonKey(name: 'is_active')
   final bool isActive;
   @override
+  @JsonKey(name: 'is_verified')
   final bool isVerified;
   @override
-  @JsonKey()
+  @JsonKey(name: 'sleep_window_start')
   final String sleepWindowStart;
   @override
-  @JsonKey()
+  @JsonKey(name: 'sleep_window_end')
   final String sleepWindowEnd;
   @override
-  @JsonKey()
+  @JsonKey(name: 'reminder_intensity')
   final String reminderIntensity;
   @override
-  @JsonKey()
+  @JsonKey(name: 'default_task_duration')
   final int defaultTaskDuration;
 
   @override
@@ -852,12 +878,13 @@ abstract class _User implements User {
   const factory _User(
       {required final int id,
       required final String email,
-      final String? fullName,
-      required final bool isActive,
-      required final bool isVerified,
-      final String sleepWindowStart,
-      final String sleepWindowEnd,
-      final String reminderIntensity,
+      @JsonKey(name: 'full_name') final String? fullName,
+      @JsonKey(name: 'is_active') required final bool isActive,
+      @JsonKey(name: 'is_verified') required final bool isVerified,
+      @JsonKey(name: 'sleep_window_start') final String sleepWindowStart,
+      @JsonKey(name: 'sleep_window_end') final String sleepWindowEnd,
+      @JsonKey(name: 'reminder_intensity') final String reminderIntensity,
+      @JsonKey(name: 'default_task_duration')
       final int defaultTaskDuration}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -867,18 +894,25 @@ abstract class _User implements User {
   @override
   String get email;
   @override
+  @JsonKey(name: 'full_name')
   String? get fullName;
   @override
+  @JsonKey(name: 'is_active')
   bool get isActive;
   @override
+  @JsonKey(name: 'is_verified')
   bool get isVerified;
   @override
+  @JsonKey(name: 'sleep_window_start')
   String get sleepWindowStart;
   @override
+  @JsonKey(name: 'sleep_window_end')
   String get sleepWindowEnd;
   @override
+  @JsonKey(name: 'reminder_intensity')
   String get reminderIntensity;
   @override
+  @JsonKey(name: 'default_task_duration')
   int get defaultTaskDuration;
 
   /// Create a copy of User
