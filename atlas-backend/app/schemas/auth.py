@@ -44,3 +44,14 @@ class TokenData(BaseModel):
 class EmailVerification(BaseModel):
     """Schema for email verification"""
     token: str
+
+
+class UpdateEmailRequest(BaseModel):
+    """Request to change the current user's email"""
+    new_email: EmailStr
+
+
+class UpdatePasswordRequest(BaseModel):
+    """Request to change the current user's password"""
+    current_password: str
+    new_password: str

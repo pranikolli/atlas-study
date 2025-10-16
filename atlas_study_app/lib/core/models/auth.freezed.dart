@@ -922,3 +922,349 @@ abstract class _User implements User {
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+UpdateEmailRequest _$UpdateEmailRequestFromJson(Map<String, dynamic> json) {
+  return _UpdateEmailRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UpdateEmailRequest {
+  String get newEmail => throw _privateConstructorUsedError;
+  String get currentPassword => throw _privateConstructorUsedError;
+
+  /// Serializes this UpdateEmailRequest to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of UpdateEmailRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $UpdateEmailRequestCopyWith<UpdateEmailRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdateEmailRequestCopyWith<$Res> {
+  factory $UpdateEmailRequestCopyWith(
+          UpdateEmailRequest value, $Res Function(UpdateEmailRequest) then) =
+      _$UpdateEmailRequestCopyWithImpl<$Res, UpdateEmailRequest>;
+  @useResult
+  $Res call({String newEmail, String currentPassword});
+}
+
+/// @nodoc
+class _$UpdateEmailRequestCopyWithImpl<$Res, $Val extends UpdateEmailRequest>
+    implements $UpdateEmailRequestCopyWith<$Res> {
+  _$UpdateEmailRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UpdateEmailRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newEmail = null,
+    Object? currentPassword = null,
+  }) {
+    return _then(_value.copyWith(
+      newEmail: null == newEmail
+          ? _value.newEmail
+          : newEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      currentPassword: null == currentPassword
+          ? _value.currentPassword
+          : currentPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UpdateEmailRequestImplCopyWith<$Res>
+    implements $UpdateEmailRequestCopyWith<$Res> {
+  factory _$$UpdateEmailRequestImplCopyWith(_$UpdateEmailRequestImpl value,
+          $Res Function(_$UpdateEmailRequestImpl) then) =
+      __$$UpdateEmailRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String newEmail, String currentPassword});
+}
+
+/// @nodoc
+class __$$UpdateEmailRequestImplCopyWithImpl<$Res>
+    extends _$UpdateEmailRequestCopyWithImpl<$Res, _$UpdateEmailRequestImpl>
+    implements _$$UpdateEmailRequestImplCopyWith<$Res> {
+  __$$UpdateEmailRequestImplCopyWithImpl(_$UpdateEmailRequestImpl _value,
+      $Res Function(_$UpdateEmailRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UpdateEmailRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newEmail = null,
+    Object? currentPassword = null,
+  }) {
+    return _then(_$UpdateEmailRequestImpl(
+      newEmail: null == newEmail
+          ? _value.newEmail
+          : newEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      currentPassword: null == currentPassword
+          ? _value.currentPassword
+          : currentPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$UpdateEmailRequestImpl implements _UpdateEmailRequest {
+  const _$UpdateEmailRequestImpl(
+      {required this.newEmail, required this.currentPassword});
+
+  factory _$UpdateEmailRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UpdateEmailRequestImplFromJson(json);
+
+  @override
+  final String newEmail;
+  @override
+  final String currentPassword;
+
+  @override
+  String toString() {
+    return 'UpdateEmailRequest(newEmail: $newEmail, currentPassword: $currentPassword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateEmailRequestImpl &&
+            (identical(other.newEmail, newEmail) ||
+                other.newEmail == newEmail) &&
+            (identical(other.currentPassword, currentPassword) ||
+                other.currentPassword == currentPassword));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, newEmail, currentPassword);
+
+  /// Create a copy of UpdateEmailRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateEmailRequestImplCopyWith<_$UpdateEmailRequestImpl> get copyWith =>
+      __$$UpdateEmailRequestImplCopyWithImpl<_$UpdateEmailRequestImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UpdateEmailRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UpdateEmailRequest implements UpdateEmailRequest {
+  const factory _UpdateEmailRequest(
+      {required final String newEmail,
+      required final String currentPassword}) = _$UpdateEmailRequestImpl;
+
+  factory _UpdateEmailRequest.fromJson(Map<String, dynamic> json) =
+      _$UpdateEmailRequestImpl.fromJson;
+
+  @override
+  String get newEmail;
+  @override
+  String get currentPassword;
+
+  /// Create a copy of UpdateEmailRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateEmailRequestImplCopyWith<_$UpdateEmailRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UpdatePasswordRequest _$UpdatePasswordRequestFromJson(
+    Map<String, dynamic> json) {
+  return _UpdatePasswordRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UpdatePasswordRequest {
+  String get currentPassword => throw _privateConstructorUsedError;
+  String get newPassword => throw _privateConstructorUsedError;
+
+  /// Serializes this UpdatePasswordRequest to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of UpdatePasswordRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $UpdatePasswordRequestCopyWith<UpdatePasswordRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdatePasswordRequestCopyWith<$Res> {
+  factory $UpdatePasswordRequestCopyWith(UpdatePasswordRequest value,
+          $Res Function(UpdatePasswordRequest) then) =
+      _$UpdatePasswordRequestCopyWithImpl<$Res, UpdatePasswordRequest>;
+  @useResult
+  $Res call({String currentPassword, String newPassword});
+}
+
+/// @nodoc
+class _$UpdatePasswordRequestCopyWithImpl<$Res,
+        $Val extends UpdatePasswordRequest>
+    implements $UpdatePasswordRequestCopyWith<$Res> {
+  _$UpdatePasswordRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UpdatePasswordRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentPassword = null,
+    Object? newPassword = null,
+  }) {
+    return _then(_value.copyWith(
+      currentPassword: null == currentPassword
+          ? _value.currentPassword
+          : currentPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      newPassword: null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UpdatePasswordRequestImplCopyWith<$Res>
+    implements $UpdatePasswordRequestCopyWith<$Res> {
+  factory _$$UpdatePasswordRequestImplCopyWith(
+          _$UpdatePasswordRequestImpl value,
+          $Res Function(_$UpdatePasswordRequestImpl) then) =
+      __$$UpdatePasswordRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String currentPassword, String newPassword});
+}
+
+/// @nodoc
+class __$$UpdatePasswordRequestImplCopyWithImpl<$Res>
+    extends _$UpdatePasswordRequestCopyWithImpl<$Res,
+        _$UpdatePasswordRequestImpl>
+    implements _$$UpdatePasswordRequestImplCopyWith<$Res> {
+  __$$UpdatePasswordRequestImplCopyWithImpl(_$UpdatePasswordRequestImpl _value,
+      $Res Function(_$UpdatePasswordRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UpdatePasswordRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentPassword = null,
+    Object? newPassword = null,
+  }) {
+    return _then(_$UpdatePasswordRequestImpl(
+      currentPassword: null == currentPassword
+          ? _value.currentPassword
+          : currentPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      newPassword: null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$UpdatePasswordRequestImpl implements _UpdatePasswordRequest {
+  const _$UpdatePasswordRequestImpl(
+      {required this.currentPassword, required this.newPassword});
+
+  factory _$UpdatePasswordRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UpdatePasswordRequestImplFromJson(json);
+
+  @override
+  final String currentPassword;
+  @override
+  final String newPassword;
+
+  @override
+  String toString() {
+    return 'UpdatePasswordRequest(currentPassword: $currentPassword, newPassword: $newPassword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePasswordRequestImpl &&
+            (identical(other.currentPassword, currentPassword) ||
+                other.currentPassword == currentPassword) &&
+            (identical(other.newPassword, newPassword) ||
+                other.newPassword == newPassword));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, currentPassword, newPassword);
+
+  /// Create a copy of UpdatePasswordRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordRequestImplCopyWith<_$UpdatePasswordRequestImpl>
+      get copyWith => __$$UpdatePasswordRequestImplCopyWithImpl<
+          _$UpdatePasswordRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UpdatePasswordRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UpdatePasswordRequest implements UpdatePasswordRequest {
+  const factory _UpdatePasswordRequest(
+      {required final String currentPassword,
+      required final String newPassword}) = _$UpdatePasswordRequestImpl;
+
+  factory _UpdatePasswordRequest.fromJson(Map<String, dynamic> json) =
+      _$UpdatePasswordRequestImpl.fromJson;
+
+  @override
+  String get currentPassword;
+  @override
+  String get newPassword;
+
+  /// Create a copy of UpdatePasswordRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdatePasswordRequestImplCopyWith<_$UpdatePasswordRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

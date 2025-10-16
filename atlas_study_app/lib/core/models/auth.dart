@@ -51,3 +51,23 @@ class User with _$User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
+
+@freezed
+class UpdateEmailRequest with _$UpdateEmailRequest {
+  const factory UpdateEmailRequest({
+    required String newEmail,
+    required String currentPassword,
+  }) = _UpdateEmailRequest;
+
+  factory UpdateEmailRequest.fromJson(Map<String, dynamic> json) => _$UpdateEmailRequestFromJson(json);
+}
+
+@freezed
+class UpdatePasswordRequest with _$UpdatePasswordRequest {
+  const factory UpdatePasswordRequest({
+    required String currentPassword,
+    required String newPassword,
+  }) = _UpdatePasswordRequest;
+
+  factory UpdatePasswordRequest.fromJson(Map<String, dynamic> json) => _$UpdatePasswordRequestFromJson(json);
+}

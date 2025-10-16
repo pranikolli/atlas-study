@@ -61,3 +61,32 @@ class AuthService:
         self.db.commit()
         self.db.refresh(user)
         return user
+
+    def change_email(self, user_id: int, new_email: str) -> User:
+        """Change user's email if not taken"""
+        # Check if email already exists
+        existing = self.get_user_by_email(new_email)
+        if existing and existing.id != user_id:
+            return None
+
+        user = self.get_user_by_id(user_id)
+        if not user:
+            return None
+
+        user.email = new_email
+        self.db.commit()
+        self.db.refresh(user)
+        return user
+
+    def change_password(self, user_id: int, current_password: str, new_password: str) -> bool:
+        """Change user's password after verifying current password"""
+        user = self.get_user_by_id(user_id)
+        if not user:
+            return False
+
+        if not verify_password(current_password, user.hashed_password):
+            return False
+
+        user.hashed_password = get_password_hash(new_password)
+        self.db.commit()
+        return True
