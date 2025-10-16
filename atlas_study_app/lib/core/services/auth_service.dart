@@ -112,6 +112,42 @@ class AuthService {
     await _prefs.remove('refresh_token');
   }
 
+  // Change email
+  Future<User> changeEmail(String newEmail) async {
+    final token = await getAccessToken();
+    if (token == null) throw 'Not authenticated';
+
+    try {
+      final response = await _dio.put(
+        '${ApiConfig.baseUrl}${ApiConfig.userEndpoint}/me/email',
+        data: {'new_email': newEmail},
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+      return User.fromJson(response.data);
+    } on DioException catch (e) {
+      throw _handleError(e);
+    }
+  }
+
+  // Change password
+  Future<void> changePassword(String currentPassword, String newPassword) async {
+    final token = await getAccessToken();
+    if (token == null) throw 'Not authenticated';
+
+    try {
+      await _dio.put(
+        '${ApiConfig.baseUrl}${ApiConfig.userEndpoint}/me/password',
+        data: {
+          'current_password': currentPassword,
+          'new_password': newPassword,
+        },
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+    } on DioException catch (e) {
+      throw _handleError(e);
+    }
+  }
+
   // Check if user is logged in
   Future<bool> isLoggedIn() async {
     final token = await getAccessToken();

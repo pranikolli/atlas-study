@@ -252,17 +252,42 @@ class _AccountSettingsPageState extends ConsumerState<AccountSettingsPage> {
       ]);
 
   Future<void> _handleChangeEmail() async {
-    if (_changeEmailFormKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Email change feature coming soon!'), backgroundColor: Colors.orange));
+    if (!_changeEmailFormKey.currentState!.validate()) return;
+    final newEmail = _newEmailController.text.trim();
+    try {
+      await ref.read(authServiceProvider).changeEmail(newEmail);
+      await ref.read(authStateProvider.notifier).refreshCurrentUser();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString()), backgroundColor: Colors.red));
+      return;
     }
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Email updated')));
+    setState(() {
+      _isChangingEmail = false;
+      _newEmailController.clear();
+    });
   }
 
   Future<void> _handleChangePassword() async {
-    if (_changePasswordFormKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Password change feature coming soon!'), backgroundColor: Colors.orange));
+    if (!_changePasswordFormKey.currentState!.validate()) return;
+    try {
+      await ref.read(authServiceProvider).changePassword(
+        _currentPasswordController.text,
+        _newPasswordController.text,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString()), backgroundColor: Colors.red));
+      return;
     }
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password updated')));
+    setState(() {
+      _isChangingPassword = false;
+      _currentPasswordController.clear();
+      _newPasswordController.clear();
+      _confirmNewPasswordController.clear();
+    });
   }
 }
 

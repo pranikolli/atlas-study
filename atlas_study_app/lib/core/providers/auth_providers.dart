@@ -93,6 +93,15 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
     }
   }
 
+  Future<void> refreshCurrentUser() async {
+    try {
+      final user = await _authService.getCurrentUser();
+      state = AsyncValue.data(user);
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
+
   Future<void> signup(String email, String password, {String? fullName}) async {
     state = const AsyncValue.loading();
     try {
