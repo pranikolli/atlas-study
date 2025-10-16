@@ -7,6 +7,7 @@ import 'settings_page.dart';
 import 'today_page.dart';
 import 'week_page.dart';
 import 'month_page.dart';
+import 'account_settings_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -217,6 +218,19 @@ class SettingsPage extends StatelessWidget {
           Card(
             child: Column(
               children: [
+                ListTile(
+                  leading: const Icon(Icons.person_outline),
+                  title: const Text('Account'),
+                  subtitle: const Text('View account info and change email/password'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const AccountSettingsPage(),
+                      ),
+                    );
+                  },
+                ),
                 ListTile(
                   leading: const Icon(Icons.palette),
                   title: const Text('Course Colors'),

@@ -103,7 +103,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // User Info Section
+          // Account Information Section
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -350,6 +350,71 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           ),
           const SizedBox(height: 24),
 
+          // Existing Settings Options (Course Colors, Calendar Sync, etc.)
+          _buildSettingsOption(
+            icon: Icons.palette,
+            title: 'Course Colors',
+            subtitle: 'Manage course color assignments',
+            onTap: () {
+              // TODO: Navigate to course colors page
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Course Colors feature coming soon!'),
+                  backgroundColor: Colors.orange,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          _buildSettingsOption(
+            icon: Icons.calendar_today,
+            title: 'Calendar Sync',
+            subtitle: 'Connect Google Calendar',
+            onTap: () {
+              // TODO: Navigate to calendar sync page
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Calendar Sync feature coming soon!'),
+                  backgroundColor: Colors.orange,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          _buildSettingsOption(
+            icon: Icons.school,
+            title: 'LMS Integration',
+            subtitle: 'Connect Canvas or Blackboard',
+            onTap: () {
+              // TODO: Navigate to LMS integration page
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('LMS Integration feature coming soon!'),
+                  backgroundColor: Colors.orange,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          _buildSettingsOption(
+            icon: Icons.notifications,
+            title: 'Reminders',
+            subtitle: 'Configure notification settings',
+            onTap: () {
+              // TODO: Navigate to reminders page
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Reminders feature coming soon!'),
+                  backgroundColor: Colors.orange,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 24),
+
           // Logout Section
           Card(
             child: Padding(
@@ -383,6 +448,31 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSettingsOption({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      child: ListTile(
+        leading: Icon(icon, color: AppTheme.primaryBlack),
+        title: Text(
+          title,
+          style: AppTheme.lightTheme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        subtitle: Text(
+          subtitle,
+          style: const TextStyle(color: AppTheme.darkGray),
+        ),
+        trailing: const Icon(Icons.chevron_right),
+        onTap: onTap,
       ),
     );
   }
