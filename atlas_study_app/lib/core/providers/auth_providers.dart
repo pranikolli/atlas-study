@@ -117,6 +117,32 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
     }
   }
 
+  Future<void> changeEmail(String newEmail, String currentPassword) async {
+    state = const AsyncValue.loading();
+    try {
+      final updatedUser = await _authService.changeEmail(newEmail, currentPassword);
+      // Stay logged in with updated user data
+      state = AsyncValue.data(updatedUser);
+    } catch (e) {
+      // Don't change auth state on error - keep user logged in
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
+
+  Future<void> changePassword(String currentPassword, String newPassword) async {
+    state = const AsyncValue.loading();
+    try {
+      await _authService.changePassword(currentPassword, newPassword);
+      // Password change doesn't return user data, so just refresh current user
+      final user = await _authService.getCurrentUser();
+      // Stay logged in with refreshed user data
+      state = AsyncValue.data(user);
+    } catch (e) {
+      // Don't change auth state on error - keep user logged in
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
+
   Future<void> logout() async {
     await _authService.logout();
     state = const AsyncValue.data(null);

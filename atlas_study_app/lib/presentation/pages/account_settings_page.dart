@@ -129,7 +129,7 @@ class _AccountSettingsPageState extends ConsumerState<AccountSettingsPage> {
                     TextFormField(
                       controller: _newEmailController,
                       keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.done,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                           labelText: 'New Email',
                           hintText: 'Enter your new email',
@@ -140,6 +140,25 @@ class _AccountSettingsPageState extends ConsumerState<AccountSettingsPage> {
                         if (value == user.email) return 'This is your current email';
                         return null;
                       },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _currentPasswordController,
+                      obscureText: _obscureCurrentPassword,
+                      textInputAction: TextInputAction.done,
+                      onFieldSubmitted: (_) => _handleChangeEmail(),
+                      decoration: InputDecoration(
+                        labelText: 'Current Password',
+                        hintText: 'Enter your current password',
+                        prefixIcon: const Icon(Icons.lock_outlined),
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscureCurrentPassword ? Icons.visibility : Icons.visibility_off),
+                          onPressed: () => setState(() => _obscureCurrentPassword = !_obscureCurrentPassword),
+                        ),
+                      ),
+                      validator: (value) => (value == null || value.isEmpty)
+                          ? 'Please enter your current password'
+                          : null,
                     ),
                     const SizedBox(height: 16),
                     ElevatedButton(onPressed: _handleChangeEmail, child: const Text('Update Email')),
@@ -255,39 +274,54 @@ class _AccountSettingsPageState extends ConsumerState<AccountSettingsPage> {
     if (!_changeEmailFormKey.currentState!.validate()) return;
     final newEmail = _newEmailController.text.trim();
     try {
-      await ref.read(authServiceProvider).changeEmail(newEmail);
-      await ref.read(authStateProvider.notifier).refreshCurrentUser();
+      await ref.read(authStateProvider.notifier).changeEmail(
+            newEmail,
+            _currentPasswordController.text,
+          );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Email updated successfully!'),
+            backgroundColor: Colors.green),
+      );
+      setState(() {
+        _isChangingEmail = false;
+        _newEmailController.clear();
+        _currentPasswordController.clear();
+      });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString()), backgroundColor: Colors.red));
-      return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text('Failed to update email: $e'),
+            backgroundColor: Colors.red),
+      );
     }
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Email updated')));
-    setState(() {
-      _isChangingEmail = false;
-      _newEmailController.clear();
-    });
   }
 
   Future<void> _handleChangePassword() async {
     if (!_changePasswordFormKey.currentState!.validate()) return;
     try {
-      await ref.read(authServiceProvider).changePassword(
-        _currentPasswordController.text,
-        _newPasswordController.text,
+      await ref.read(authStateProvider.notifier).changePassword(
+            _currentPasswordController.text,
+            _newPasswordController.text,
+          );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Password updated successfully!'),
+            backgroundColor: Colors.green),
       );
+      setState(() {
+        _isChangingPassword = false;
+        _currentPasswordController.clear();
+        _newPasswordController.clear();
+        _confirmNewPasswordController.clear();
+      });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString()), backgroundColor: Colors.red));
-      return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text('Failed to update password: $e'),
+            backgroundColor: Colors.red),
+      );
     }
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password updated')));
-    setState(() {
-      _isChangingPassword = false;
-      _currentPasswordController.clear();
-      _newPasswordController.clear();
-      _confirmNewPasswordController.clear();
-    });
   }
 }
 

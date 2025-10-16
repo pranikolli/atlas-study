@@ -178,6 +178,18 @@ class AuthService {
       if (data is Map<String, dynamic> && data.containsKey('detail')) {
         final detail = data['detail'].toString();
         print('  Server Error Detail: $detail');
+        
+        // Provide user-friendly error messages
+        if (detail.contains('Incorrect current password') || detail.contains('Incorrect email or password')) {
+          return 'Incorrect current password. Please try again.';
+        }
+        if (detail.contains('Email already registered')) {
+          return 'This email is already registered. Please use a different email.';
+        }
+        if (detail.contains('Could not validate credentials')) {
+          return 'Session expired. Please log in again.';
+        }
+        
         return detail;
       }
     }
@@ -193,6 +205,12 @@ class AuthService {
         return 'Cannot connect to backend server. Is it running on http://localhost:8000?';
       case DioExceptionType.badResponse:
         print('  Error: Bad response from server (${e.response?.statusCode})');
+        if (e.response?.statusCode == 401) {
+          return 'Incorrect current password. Please try again.';
+        }
+        if (e.response?.statusCode == 400) {
+          return 'Invalid request. Please check your input.';
+        }
         return 'Server error (${e.response?.statusCode}). Check backend logs.';
       default:
         print('  Error: Unexpected error type');
