@@ -55,8 +55,8 @@ class User with _$User {
 @freezed
 class UpdateEmailRequest with _$UpdateEmailRequest {
   const factory UpdateEmailRequest({
-    required String newEmail,
-    required String currentPassword,
+    @JsonKey(name: 'new_email') required String newEmail,
+    @JsonKey(name: 'current_password') required String currentPassword,
   }) = _UpdateEmailRequest;
 
   factory UpdateEmailRequest.fromJson(Map<String, dynamic> json) => _$UpdateEmailRequestFromJson(json);
@@ -65,8 +65,8 @@ class UpdateEmailRequest with _$UpdateEmailRequest {
 @freezed
 class UpdatePasswordRequest with _$UpdatePasswordRequest {
   const factory UpdatePasswordRequest({
-    required String currentPassword,
-    required String newPassword,
+    @JsonKey(name: 'current_password') required String currentPassword,
+    @JsonKey(name: 'new_password') required String newPassword,
   }) = _UpdatePasswordRequest;
 
   factory UpdatePasswordRequest.fromJson(Map<String, dynamic> json) => _$UpdatePasswordRequestFromJson(json);

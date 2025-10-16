@@ -929,7 +929,9 @@ UpdateEmailRequest _$UpdateEmailRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UpdateEmailRequest {
+  @JsonKey(name: 'new_email')
   String get newEmail => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_password')
   String get currentPassword => throw _privateConstructorUsedError;
 
   /// Serializes this UpdateEmailRequest to a JSON map.
@@ -948,7 +950,9 @@ abstract class $UpdateEmailRequestCopyWith<$Res> {
           UpdateEmailRequest value, $Res Function(UpdateEmailRequest) then) =
       _$UpdateEmailRequestCopyWithImpl<$Res, UpdateEmailRequest>;
   @useResult
-  $Res call({String newEmail, String currentPassword});
+  $Res call(
+      {@JsonKey(name: 'new_email') String newEmail,
+      @JsonKey(name: 'current_password') String currentPassword});
 }
 
 /// @nodoc
@@ -990,7 +994,9 @@ abstract class _$$UpdateEmailRequestImplCopyWith<$Res>
       __$$UpdateEmailRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String newEmail, String currentPassword});
+  $Res call(
+      {@JsonKey(name: 'new_email') String newEmail,
+      @JsonKey(name: 'current_password') String currentPassword});
 }
 
 /// @nodoc
@@ -1026,14 +1032,17 @@ class __$$UpdateEmailRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UpdateEmailRequestImpl implements _UpdateEmailRequest {
   const _$UpdateEmailRequestImpl(
-      {required this.newEmail, required this.currentPassword});
+      {@JsonKey(name: 'new_email') required this.newEmail,
+      @JsonKey(name: 'current_password') required this.currentPassword});
 
   factory _$UpdateEmailRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateEmailRequestImplFromJson(json);
 
   @override
+  @JsonKey(name: 'new_email')
   final String newEmail;
   @override
+  @JsonKey(name: 'current_password')
   final String currentPassword;
 
   @override
@@ -1075,15 +1084,18 @@ class _$UpdateEmailRequestImpl implements _UpdateEmailRequest {
 
 abstract class _UpdateEmailRequest implements UpdateEmailRequest {
   const factory _UpdateEmailRequest(
-      {required final String newEmail,
+      {@JsonKey(name: 'new_email') required final String newEmail,
+      @JsonKey(name: 'current_password')
       required final String currentPassword}) = _$UpdateEmailRequestImpl;
 
   factory _UpdateEmailRequest.fromJson(Map<String, dynamic> json) =
       _$UpdateEmailRequestImpl.fromJson;
 
   @override
+  @JsonKey(name: 'new_email')
   String get newEmail;
   @override
+  @JsonKey(name: 'current_password')
   String get currentPassword;
 
   /// Create a copy of UpdateEmailRequest
@@ -1101,7 +1113,9 @@ UpdatePasswordRequest _$UpdatePasswordRequestFromJson(
 
 /// @nodoc
 mixin _$UpdatePasswordRequest {
+  @JsonKey(name: 'current_password')
   String get currentPassword => throw _privateConstructorUsedError;
+  @JsonKey(name: 'new_password')
   String get newPassword => throw _privateConstructorUsedError;
 
   /// Serializes this UpdatePasswordRequest to a JSON map.
@@ -1120,7 +1134,9 @@ abstract class $UpdatePasswordRequestCopyWith<$Res> {
           $Res Function(UpdatePasswordRequest) then) =
       _$UpdatePasswordRequestCopyWithImpl<$Res, UpdatePasswordRequest>;
   @useResult
-  $Res call({String currentPassword, String newPassword});
+  $Res call(
+      {@JsonKey(name: 'current_password') String currentPassword,
+      @JsonKey(name: 'new_password') String newPassword});
 }
 
 /// @nodoc
@@ -1164,7 +1180,9 @@ abstract class _$$UpdatePasswordRequestImplCopyWith<$Res>
       __$$UpdatePasswordRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String currentPassword, String newPassword});
+  $Res call(
+      {@JsonKey(name: 'current_password') String currentPassword,
+      @JsonKey(name: 'new_password') String newPassword});
 }
 
 /// @nodoc
@@ -1201,14 +1219,17 @@ class __$$UpdatePasswordRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UpdatePasswordRequestImpl implements _UpdatePasswordRequest {
   const _$UpdatePasswordRequestImpl(
-      {required this.currentPassword, required this.newPassword});
+      {@JsonKey(name: 'current_password') required this.currentPassword,
+      @JsonKey(name: 'new_password') required this.newPassword});
 
   factory _$UpdatePasswordRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdatePasswordRequestImplFromJson(json);
 
   @override
+  @JsonKey(name: 'current_password')
   final String currentPassword;
   @override
+  @JsonKey(name: 'new_password')
   final String newPassword;
 
   @override
@@ -1250,15 +1271,18 @@ class _$UpdatePasswordRequestImpl implements _UpdatePasswordRequest {
 
 abstract class _UpdatePasswordRequest implements UpdatePasswordRequest {
   const factory _UpdatePasswordRequest(
-      {required final String currentPassword,
+      {@JsonKey(name: 'current_password') required final String currentPassword,
+      @JsonKey(name: 'new_password')
       required final String newPassword}) = _$UpdatePasswordRequestImpl;
 
   factory _UpdatePasswordRequest.fromJson(Map<String, dynamic> json) =
       _$UpdatePasswordRequestImpl.fromJson;
 
   @override
+  @JsonKey(name: 'current_password')
   String get currentPassword;
   @override
+  @JsonKey(name: 'new_password')
   String get newPassword;
 
   /// Create a copy of UpdatePasswordRequest

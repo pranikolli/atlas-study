@@ -75,27 +75,27 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
 _$UpdateEmailRequestImpl _$$UpdateEmailRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$UpdateEmailRequestImpl(
-      newEmail: json['newEmail'] as String,
-      currentPassword: json['currentPassword'] as String,
+      newEmail: json['new_email'] as String,
+      currentPassword: json['current_password'] as String,
     );
 
 Map<String, dynamic> _$$UpdateEmailRequestImplToJson(
         _$UpdateEmailRequestImpl instance) =>
     <String, dynamic>{
-      'newEmail': instance.newEmail,
-      'currentPassword': instance.currentPassword,
+      'new_email': instance.newEmail,
+      'current_password': instance.currentPassword,
     };
 
 _$UpdatePasswordRequestImpl _$$UpdatePasswordRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$UpdatePasswordRequestImpl(
-      currentPassword: json['currentPassword'] as String,
-      newPassword: json['newPassword'] as String,
+      currentPassword: json['current_password'] as String,
+      newPassword: json['new_password'] as String,
     );
 
 Map<String, dynamic> _$$UpdatePasswordRequestImplToJson(
         _$UpdatePasswordRequestImpl instance) =>
     <String, dynamic>{
-      'currentPassword': instance.currentPassword,
-      'newPassword': instance.newPassword,
+      'current_password': instance.currentPassword,
+      'new_password': instance.newPassword,
     };

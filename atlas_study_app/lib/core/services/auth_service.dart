@@ -202,6 +202,9 @@ class AuthService {
         if (detail.contains('Could not validate credentials')) {
           return 'Session expired. Please log in again.';
         }
+        if (detail.contains('Incorrect email or password')) {
+          return 'The email/password is incorrect.';
+        }
         
         return detail;
       }
@@ -219,6 +222,10 @@ class AuthService {
       case DioExceptionType.badResponse:
         print('  Error: Bad response from server (${e.response?.statusCode})');
         if (e.response?.statusCode == 401) {
+          // Check if this is a login request by looking at the URL
+          if (e.requestOptions.uri.toString().contains('/login')) {
+            return 'The email/password is incorrect.';
+          }
           return 'Incorrect current password. Please try again.';
         }
         if (e.response?.statusCode == 400) {
