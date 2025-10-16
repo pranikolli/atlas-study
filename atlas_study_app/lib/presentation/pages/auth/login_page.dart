@@ -40,10 +40,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           }
         },
         error: (error, stackTrace) {
+          String errorMessage = 'Login failed. Please try again.';
+          if (error is String) {
+            errorMessage = error;
+          } else {
+            errorMessage = error.toString();
+          }
+          
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(error.toString()),
+              content: Text(errorMessage),
               backgroundColor: Colors.red,
+              duration: const Duration(seconds: 4),
             ),
           );
         },

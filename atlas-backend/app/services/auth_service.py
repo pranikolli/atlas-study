@@ -62,15 +62,19 @@ class AuthService:
         self.db.refresh(user)
         return user
 
-    def change_email(self, user_id: int, new_email: str) -> User:
-        """Change user's email if not taken"""
+    def change_email(self, user_id: int, new_email: str, current_password: str) -> User:
+        """Change user's email if not taken and current password is correct"""
+        user = self.get_user_by_id(user_id)
+        if not user:
+            return None
+
+        # Verify current password
+        if not verify_password(current_password, user.hashed_password):
+            return None
+
         # Check if email already exists
         existing = self.get_user_by_email(new_email)
         if existing and existing.id != user_id:
-            return None
-
-        user = self.get_user_by_id(user_id)
-        if not user:
             return None
 
         user.email = new_email

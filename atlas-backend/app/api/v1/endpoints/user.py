@@ -48,9 +48,9 @@ async def get_current_user(current_user: User = Depends(get_current_user_depende
 async def update_email(payload: UpdateEmailRequest, current_user: User = Depends(get_current_user_dependency), db: Session = Depends(get_db)):
     """Update the current user's email"""
     service = AuthService(db)
-    updated = service.change_email(current_user.id, payload.new_email)
+    updated = service.change_email(current_user.id, payload.new_email, payload.current_password)
     if not updated:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already in use")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect current password")
     return UserResponse.model_validate(updated)
 
 
@@ -60,5 +60,5 @@ async def update_password(payload: UpdatePasswordRequest, current_user: User = D
     service = AuthService(db)
     ok = service.change_password(current_user.id, payload.current_password, payload.new_password)
     if not ok:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Current password is incorrect")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect current password")
     return None
