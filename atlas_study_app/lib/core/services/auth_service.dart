@@ -113,19 +113,32 @@ class AuthService {
   }
 
   // Change email
-  Future<User> changeEmail(String newEmail) async {
+  Future<User> changeEmail(String newEmail, String currentPassword) async {
     final token = await getAccessToken();
     if (token == null) throw 'Not authenticated';
 
+    print('🟡 Attempting to change email:');
+    print('  New Email: $newEmail');
+    print('  URL: ${ApiConfig.baseUrl}${ApiConfig.userEndpoint}/me/email');
+    
     try {
       final response = await _dio.put(
         '${ApiConfig.baseUrl}${ApiConfig.userEndpoint}/me/email',
-        data: {'new_email': newEmail},
+        data: UpdateEmailRequest(newEmail: newEmail, currentPassword: currentPassword).toJson(),
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
+      
+      print('✅ Email change successful!');
+      print('  Status: ${response.statusCode}');
+      print('  Response: ${response.data}');
+      
       return User.fromJson(response.data);
     } on DioException catch (e) {
+      print('❌ Email change failed with DioException');
       throw _handleError(e);
+    } catch (e) {
+      print('❌ Email change failed with unexpected error: $e');
+      rethrow;
     }
   }
 
